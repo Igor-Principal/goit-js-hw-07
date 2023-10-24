@@ -12,7 +12,7 @@ function onClick(evt) {
   const currentPhoto = evt.target;
   const originalPhoto = currentPhoto.dataset.source;
   const descriptionPhoto = currentPhoto.alt;
-  
+
   const instance = basicLightbox.create(`
      <div>
       <img src="${originalPhoto}" alt="${descriptionPhoto}" />
@@ -24,7 +24,6 @@ function onClick(evt) {
   function onKeyPress(evt) {
     if (evt.key === "Escape") {
       instance.close();
-      window.removeEventListener("keydown", onKeyPress);
     }
   }
 }
