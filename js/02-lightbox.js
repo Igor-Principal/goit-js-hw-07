@@ -15,16 +15,8 @@ function createMarkup(arr) {
     .join("");
 }
 
-container.addEventListener("click", onClick);
-
-function onClick(evt) {
-    evt.preventDefault();
-    if (evt.target === evt.currentTarget) {
-      return;
-    }
-
     const lightbox = new SimpleLightbox(".gallery__item a", {
       captionsData: "alt",
       captionDelay: 250
     });
-}
+

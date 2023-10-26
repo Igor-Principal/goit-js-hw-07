@@ -16,19 +16,24 @@ function onClick(evt) {
   const originalPhoto = currentPhoto.dataset.source;
   const descriptionPhoto = currentPhoto.alt;
 
-  const instance = basicLightbox.create(`
-     <div>
+  const instance = basicLightbox.create(
+    `<div>
       <img src="${originalPhoto}" alt="${descriptionPhoto}" />
-    </div>
-`);
+    </div>`,
+    {
+      onShow: (instance) => {window.addEventListener("keydown", onKeyPress);},
+   
+      onClose: (instance) => {window.removeEventListener("keydown", onKeyPress);},
+    }
+  );
   instance.show();
-
-  window.addEventListener("keydown", onKeyPress);
+  
   function onKeyPress(evt) {
     if (evt.key === "Escape") {
       instance.close();
     }
   }
+
 }
 
 function createMarkup(arr) {
